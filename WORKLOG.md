@@ -13,10 +13,10 @@ info
 
 ## Junling Zhang
 
-### date x
+### 5/22/24
 
-info
-
+Started writing the script
+**https://docs.google.com/document/d/1-DvDSSQMraG0U1HEE7RmkPVWQyRqIZyMFDw2X3tST78/edit?usp=sharing**
 ### date y
 
 info
