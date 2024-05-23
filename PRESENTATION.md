@@ -35,3 +35,27 @@ private void a(a b) {
 }
 ```
 Because functions can have multiple forms, code can be even more confusing. If you just had the second form of the code, it would be really really hard to figure out how anything worked.
+
+### Debug Obfuscation
+Debug obfuscation is another pretty simple obfuscation method. It just removes all comments and debugging functions from the code. This is pretty effective (imagine reading over your code without any comments), but it's almost necessary when coupled with any other obfuscation method. No matter how obscure your code is, if it's written over with comments and debugging information you can figure out what it means.
+
+It's hard to demonstrate debug obfuscation on a small scale, but just imagine one of your whole code files with no comments. Tough.
+
+Small-scale example:
+Before obfuscation
+```
+// function for multiplying two integers
+// input: two integers
+// returns: one integer
+private int multiplier(int a, int b) {
+    // multiplies the two integers
+    return a * b;
+}
+```
+
+After obfuscation
+```
+private int multiplier(int a, int b) {
+    return a * b;
+}
+```
