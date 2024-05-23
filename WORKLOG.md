@@ -21,6 +21,8 @@ info
 
 Started writing the script
 **https://docs.google.com/document/d/1-DvDSSQMraG0U1HEE7RmkPVWQyRqIZyMFDw2X3tST78/edit?usp=sharing**
-### date y
 
-info
+
+### 5/53/24
+
+Worked on script and ReadME.md
