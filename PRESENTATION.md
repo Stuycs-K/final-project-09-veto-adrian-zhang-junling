@@ -1,6 +1,6 @@
 # Code Obfuscation
 
-### Overview
+## Overview
 Code obfuscation is a system in which normal, human-readable code is made more difficult to understand. The code should still function in exactly the same way pre- and post-obfuscation, but obfuscation should make code significantly harder to read.
 
 There are multiple reasons to obfuscate code:
