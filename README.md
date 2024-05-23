@@ -2,6 +2,7 @@
 # THIS DOCUMENT IS REQUIRED
 ## Group Info
 Members: Adrian Veto, Junling Zhang
+
 Topic: Code Obfuscation
 
 ## Overview
