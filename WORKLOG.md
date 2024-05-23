@@ -8,7 +8,7 @@ Started reaserching different types of obfuscation and tools that apply said obf
 
 ### 2024-05-23
 
-
+Worked on the presentation file, started finding image examples for each of the types of obfuscation.
 
 ### date y
 
