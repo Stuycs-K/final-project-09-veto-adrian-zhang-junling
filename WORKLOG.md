@@ -2,9 +2,13 @@
 
 ## Adrian Veto
 
-### date x
+### 2024-05-21
 
-info
+Started reaserching different types of obfuscation and tools that apply said obfuscation types. Split into different types for ease of reading.
+
+### 2024-05-23
+
+
 
 ### date y
 
