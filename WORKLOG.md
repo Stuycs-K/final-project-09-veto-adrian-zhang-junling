@@ -17,12 +17,18 @@ info
 
 ## Junling Zhang
 
-### 5/22/24
+### 5/22/2024
 
 Started writing the script
 **https://docs.google.com/document/d/1-DvDSSQMraG0U1HEE7RmkPVWQyRqIZyMFDw2X3tST78/edit?usp=sharing**
 
 
-### 5/53/24
+### 5/23/2024
 
-Worked on script and ReadME.md
+Worked on script and README.md
+
+
+### 5/24/2024
+
+Worked on script, README.md(added Address Obfuscation, Custom Encoding, 
+Runtime Arguments; Improved Storage Obfuscation)
