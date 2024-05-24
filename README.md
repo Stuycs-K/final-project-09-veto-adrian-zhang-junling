@@ -10,13 +10,15 @@ Code Obfuscation is a method of hiding code in such a way that it can't a) be de
 There are also tournaments that are centered around obfuscation, one of which is the International Obfuscated C Code Contest.
 There are multiple different ways to obfuscate code: String Encryption, Rename Obfuscation, Aggregation Obfuscation, Storage Obfuscation, Control Obfuscation, and Debug Obfuscation.
 
-    String Encryption - encrypt the string within the code and decrypt at runtime
+    String Encryption - encrypt the string within the code and decrypt at runtime. Additionally programmers can implement Custom Encoding and/or runtime arguments.
+         Custom Encoding involves the programmer creating their own encoder and decoder for private use.
+         Runtime Arguments involves changing the program to require an user provided decryption key at runtime to decode parts of the program
 
     Rename Obfuscation - rename variables and functions to unrelated words
 
     Aggregation Obfuscation - Split a single array into smaller subarrays
 
-    Storage Obfuscation - Storing variables globally versus locally
+    Storage Obfuscation - Changes how data is stored in memory(Locally versus Globally)
 
     Control Obfuscation - Messing with the flow of the code to throw people off track(code that leads to nowhere)
 
@@ -24,9 +26,13 @@ There are multiple different ways to obfuscate code: String Encryption, Rename O
 
     Data Obfuscation - Disguising confidential and sensitive data and information through various methods like encryption and tokenization
 
+    Address Obfuscation - Randomizes the internal/virtual address of variables between runtimes/executions
+
 It is also possible to combine the different ways to obfuscate code, like using String Encryption and Rename Obfuscation together.
 There are programs that are dedicated to help programmers with obfuscating code such as ProGuard, DexGuard, and JavaGuard.
 There are also programs that can help with deobfuscation like Threadtear.
 Vulnerabilities that already exist within the code does not get removed and it is reccommended to use other security measures in addtion to Code Obfuscation such as Access Control and Encryption.
 
 ## Instructions
+
+PRESENTATION.md contains a text document made for presentations.
