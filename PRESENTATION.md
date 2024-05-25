@@ -59,3 +59,12 @@ private int multiplier(int a, int b) {
     return a * b;
 }
 ```
+
+### Control Flow Obfuscation
+Control flow obfuscation is where obfuscation starts to get a little trickier. There are limitless options for *how* to use control flow obfuscation in code, which makes it really hard to detect and reverse engineer. Control flow obfuscation is essentially messing up the logic of your code so that it's harder to read.
+
+Here are some of the more common ways to accomplish that:
+- **Dead ends**: creating bunches of code that do nothing and just fill up space in a program. This makes a potential deobfuscater have to go through many more lines of code before realizing that it's all useless and doesn't actually make changes to the program.
+- **Splitting up code**: Taking functions and processes in code and splitting them up among other, smaller functions. This changes the flow of your code and makes it harder to follow where every part of the code leads.
+- **Adding conditions**: Adds more parts to conditional statements to make them harder to understand. Involves statements of the form "and TRUE" and "or FALSE", where TRUE and FALSE are complex logical statements that don't depend on the rest of the code.
+- **Complex looping structures**: Instead of simple `for` or `while` loops, control flow obfuscation usually makes much more complex looping structures, including nesting loops and conditional statements to make code much harder to read.
