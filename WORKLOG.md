@@ -10,9 +10,9 @@ Started reaserching different types of obfuscation and tools that apply said obf
 
 Worked on the presentation file, started finding image examples for each of the types of obfuscation.
 
-### date y
+### 2024-05-25
 
-info
+Fixed my branch (it's still hard to branch I swear), worked on presentation slides, typing up more types of obfuscation and making examples.
 
 
 ## Junling Zhang
