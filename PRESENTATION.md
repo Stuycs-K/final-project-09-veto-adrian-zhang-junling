@@ -108,3 +108,12 @@ There are many different methods of data obfuscation, some of which can be layer
 - **Encryption:** this is pretty straightforward: personal information is encrypted through some sort of cipher that can then be decrypted later.
 - **Generalization:** for datasets that don't rely on individuals, personal information is separated from its owner so that certain information can't be associated with an individual. Generalization also includes making data categories more broad so that personal information isn't as specific.
 - **Randomization:** randomization involves adding *more* data to a dataset so that important data gets confused. Randomization adds random "noise" values to people so that data that actually matters isn't easy to find.
+
+## Potential Flaws/Downsides of Obfuscation
+The main downside of code obfuscation is that it limits code performance. Because of this, it's sometimes difficult to choose the right level of code obfuscation. More obfuscation is more secure, but it also comes with worse performance.
+
+**Why does obfuscation slow code?**
+To run obfuscated code, the compiler/obfuscation tool has to deobfuscate code *before* running the code. Certain types of obfuscation, like string obfuscation, take even longer than others. Going through entire layers of decryption before even touching the code will obviously slow down code.
+
+The only real solution to this is choosing types of obfuscation that are suitable for the task. It's probably overkill to run string obfuscation when the code only has a couple strings, so that would needlessly slow down code. When a developer obfuscates their code, they have to make decisions about how intensively they want to obfuscate.
+
