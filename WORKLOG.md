@@ -14,6 +14,10 @@ Worked on the presentation file, started finding image examples for each of the 
 
 Fixed my branch (it's still hard to branch I swear), worked on presentation slides, typing up more types of obfuscation and making examples.
 
+### 2024-05-28
+
+Worked on presentation file and finished the different types of obfuscation. Starting to work on reasons to obfuscate and potential flaws/downsides of obfuscation.
+
 
 ## Junling Zhang
 
