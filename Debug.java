@@ -22,19 +22,30 @@ public class Debug{
 		Scanner scan = new Scanner(new File(filename)) ;
 		boolean blockComment = false ;
 		while(scan.hasNextLine()){
+			boolean newline = true ;
 			String line = scan.nextLine() ;
 			if(line.indexOf("/*") != -1){
 				blockComment = true ;
-			}
-			if( !blockComment){
 				removed += line.substring(0, line.indexOf("/*")) ;
+			}
+			if(blockComment){
+				// System.out.println(line.indexOf("/*")) ;
+				// System.out.println(line) ;
+				newline = false ;
 				if(line.indexOf("*/") != -1){
 					blockComment = false ;
 					removed += line.substring(line.indexOf("*/") + 1) ;
+					newline = true ;
 				}
 			}
-			else if(line.indexOf("//") ==  -1){
+			else if(line.indexOf("//") !=  -1){
 				removed += line.substring(0, line.indexOf("//")) ;
+				newline = false ;
+			}else{
+				removed += line ;
+			}
+			if(newline){
+				removed += "\n" ;
 			}
 		}
 		}catch(FileNotFoundException e){
