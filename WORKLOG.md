@@ -36,3 +36,8 @@ Worked on script and README.md
 
 Worked on script, README.md(added Address Obfuscation, Custom Encoding, 
 Runtime Arguments; Improved Storage Obfuscation)
+
+
+### 5/28/2024
+
+Created Debug.java, Rename.java, worked on and debugged Debug.java
