@@ -89,3 +89,12 @@ for i in array:
 ```
 
 When coupled with a bunch of other obfuscation methods, aggregation obfuscation makes it harder to work with data structures and deobfuscate code.
+
+### String Obfuscation
+String obfuscation is pretty simple: all strings in the code are encrypted before being decrypted at runtime. This is almost necessary for any code that involves strings in any form. If you're trying to deobfuscate some code and there's a giant string in the middle telling you exactly what is going on in that section of the code, it's pretty easy to figure out where to go from there. In string obfuscation, those strings go through a cipher so that they're unreadable at first.
+
+There are a couple of ways that string obfuscation works:
+- The obfuscation tool can include its own cipher. In that case, the obfuscation tool will also have a way to reverse-engineer their cipher built in to the deobfuscator.
+- The user can do custom encryption where they create their own cipher program and their own way to decode it. This offers more individuality as long as the user is okay with creating their own code for encrypting and decrypting the code.
+- The obfuscation tool can have runtime arguments (like a key for the cipher) to use in decryption.
+
