@@ -68,3 +68,24 @@ Here are some of the more common ways to accomplish that:
 - **Splitting up code**: Taking functions and processes in code and splitting them up among other, smaller functions. This changes the flow of your code and makes it harder to follow where every part of the code leads.
 - **Adding conditions**: Adds more parts to conditional statements to make them harder to understand. Involves statements of the form "and TRUE" and "or FALSE", where TRUE and FALSE are complex logical statements that don't depend on the rest of the code.
 - **Complex looping structures**: Instead of simple `for` or `while` loops, control flow obfuscation usually makes much more complex looping structures, including nesting loops and conditional statements to make code much harder to read.
+
+### Aggregation Obfuscation
+Aggregation obfuscation is an obfuscation method that relies on breaking up arrays and data structures to store their data in separate places. This makes code more confusing and much harder to read.
+
+As a simple example, look at the code below. Pre-obfuscation, there's one array of numbers to loop through. Post-obfuscation, there are three nested arrays. The code has the same effect, but it's harder to read. If the same process was carried out on larger datasets across more code, it would be much harder to understand.
+```
+array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+for i in array:
+    print(i)
+```
+
+*Through the obfuscator*
+
+```
+array = [[1, 2], [3, 4, 5], [6, 7], [8, 9]]
+for i in array:
+    for j in i:
+        print(j)
+```
+
+When coupled with a bunch of other obfuscation methods, aggregation obfuscation makes it harder to work with data structures and deobfuscate code.
