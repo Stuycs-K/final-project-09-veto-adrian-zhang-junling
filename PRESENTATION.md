@@ -98,3 +98,13 @@ There are a couple of ways that string obfuscation works:
 - The user can do custom encryption where they create their own cipher program and their own way to decode it. This offers more individuality as long as the user is okay with creating their own code for encrypting and decrypting the code.
 - The obfuscation tool can have runtime arguments (like a key for the cipher) to use in decryption.
 
+### Data Obfuscation
+Data obfuscation is almost a whole separate topic, but it's necessary when working with datasets or personal information in your programs. Data obfuscation is set of ways of disguising personal information so that it can't be read even if it gets stolen. As expected, this is very important in a number of different fields, and basically any data stored online has to be masked somehow.
+
+When working with large datasets of personal information, code should include data obfuscation to make sure the secret information can't be stolen.
+
+There are many different methods of data obfuscation, some of which can be layered on top of each other for added security.
+- **Tokenization:** different sensitive information is replaced with set characters (tokens) so that they can't be interpreted at face value. This is best used for replicable personal information like credit card numbers and health information.
+- **Encryption:** this is pretty straightforward: personal information is encrypted through some sort of cipher that can then be decrypted later.
+- **Generalization:** for datasets that don't rely on individuals, personal information is separated from its owner so that certain information can't be associated with an individual. Generalization also includes making data categories more broad so that personal information isn't as specific.
+- **Randomization:** randomization involves adding *more* data to a dataset so that important data gets confused. Randomization adds random "noise" values to people so that data that actually matters isn't easy to find.
