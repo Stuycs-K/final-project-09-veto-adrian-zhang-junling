@@ -21,47 +21,45 @@ public class Debug{
 		try{
 		Scanner scan = new Scanner(new File(filename)) ;
 		boolean blockComment = false ;
+		int skip2 = 0 ;
+		boolean newline = true ;
 		while(scan.hasNextLine()){
-			boolean newline = true ;
 			String line = scan.nextLine() ;
 			boolean str = false ;
-			int lineComment = 0 ;
+			boolean lineComment = false ;
 			boolean star = false ;
-			for(char c in line){
+			for(int i = 0 ; i < line.length(); i++){
+				char c = line.charAt(i) ;
 				if(c == '"'){
 					str = !str ;
 				}
-				if(str){
-					removed += c ;
-				}
-				if(c == '/'){
-					if(lineComment = 0){
-						lineComment = 1 ;
-					}else if(lineComment = 1){
-						lineComment = 2 ;
-						removed = removed.substring(0, removed.length() - 2) ;
+				if(!str){
+					try{
+					if(c == '/' && line.charAt(i + 1) == '/'){
+						lineComment = true ;
+					}else if (c == '/' && line.charAt(i + 1)== '*'){
+						blockComment = true ;
+						newline = false ;
+					}else if (c == '*' && line.charAt(i + 1) =='/'){
+						blockComment = false ;
+						newline = true ;
+						skip2 = 2 ;
 					}
-					
-				}else{
-					lineComment = 0 ;
+					}catch(StringIndexOutOfBoundsException e){
+
+					}
 				}
-				if(lineComment != 2){
+				if(((!blockComment && !lineComment )|| str) && skip2 == 0 ){
 					removed += c ;
 				}
-				if(lineComment == 1 && c == '*'){
-					blockComment = true ;
-				}else if(c == '/' && star){
-					blockComment = false ;
-					star = false ;
+				if(skip2 > 0){
+					skip2-- ;
 				}
 
-				if(!blockComment){
-					removed += c ;
-				}
-				if(c == '*'){
-					star = true ;
-				}
+			}
 
+			if(newline){
+				removed += "\n" ;
 			}
 			/*
 			if(line.indexOf("/*") != -1){
