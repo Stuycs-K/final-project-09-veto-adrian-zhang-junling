@@ -45,3 +45,8 @@ Runtime Arguments; Improved Storage Obfuscation)
 ### 5/28/2024
 
 Created Debug.java, Rename.java, worked on and debugged Debug.java
+
+
+### 5/29/2024
+
+Reworked Debug.java for String Compatibility, Continued working on Rename.java
