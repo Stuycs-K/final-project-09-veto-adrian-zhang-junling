@@ -18,6 +18,10 @@ Fixed my branch (it's still hard to branch I swear), worked on presentation slid
 
 Worked on presentation file and finished the different types of obfuscation. Starting to work on reasons to obfuscate and potential flaws/downsides of obfuscation.
 
+### 2024-05-29
+
+Finished up presentation document, including obfuscation tools and the IOCCC. Only thing to add to presentation is documentation for our code: how to use our programs.
+
 
 ## Junling Zhang
 
