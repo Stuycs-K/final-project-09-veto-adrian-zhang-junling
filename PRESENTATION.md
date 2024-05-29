@@ -117,10 +117,10 @@ To run obfuscated code, the compiler/obfuscation tool has to deobfuscate code *b
 
 The only real solution to this is choosing types of obfuscation that are suitable for the task. It's probably overkill to run string obfuscation when the code only has a couple strings, so that would needlessly slow down code. When a developer obfuscates their code, they have to make decisions about how intensively they want to obfuscate.
 
-### How to Obfuscate
+## How to Obfuscate
 There are a number of obfuscation programs on the internet that can be used for different languages. Obfuscation software can be found for basically anything on the internet, though most of it is paid software. There are also some open-source programs and command line tools for obfuscation. We also made a couple of programs for obfuscating code.
 
-### For Fun
+## For Fun
 Finally, there are code obfuscation contests, where people come up with programs that are graded on what they do and how successful their obfuscation is. Some of these contests even have limits on the number of characters that can be used, which means that people have to write small *and* confusing programs. Some of this stuff gets really complicated, but it's also quite cool.
 
 The best example of a contest like this is the *International Obfuscated C Code Contest*, a biannual contest where programmers from all over the world submit obfuscated C programs. The judges of the contests look at both the finished product and the structure of the code to determine winners and placements. All code is then posted online, where people try to figure out what the program does solely by looking at the source code.
@@ -190,4 +190,4 @@ This code only has one thing in main: an iterated call to printf. That's it. If 
     It's a fully-functional command-line tic-tac-toe. Now that you know what it is, try to figure out how the code above works.
 </details>
 
-Coding contests are obviously not the most necessary use of obfuscation. But they're really fun, and it's interesting to see what very advanced programmers can accomplish with a ton of time and dedication to a project. If you're interested in learning more about the IOCCC, check out their website and their winners from last year: [IOCCC](https://www.ioccc.org/)
+Coding contests are obviously not the most necessary use of obfuscation. But they're really fun, and it's interesting to see what very advanced programmers can accomplish with a ton of time and dedication to a project. If you're interested in learning more about the IOCCC, check out their website and their winners from last year: [IOCCC](https://www.ioccc.org/).
