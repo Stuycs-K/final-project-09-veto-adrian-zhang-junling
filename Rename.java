@@ -39,16 +39,17 @@ public class Rename {
 			}
 		}
 		if (detected) {
-			String[] split = line.split("[ ]");
+			String[] split = line.split("[ =]");
 			finished += split[0] + " ";
 			String name = randomName(split[1].length()) ;
-			finished += name;
+			finished += name+"=";
 			for (int i = 2; i < split.length; i++) {
 				finished += split[i];
 			}
 			original.add(split[1]) ;
 			obscured.add(name) ;
-			System.out.println(finished + Arrays.toString(split) + name) ;
+			// System.out.println(finished + Arrays.toString(split) + name) ;
+			System.out.println(split[1] + " " + name) ;
 		} else {
 			ArrayList<String> information = new ArrayList<>();
 			while (line.indexOf('"') != -1) {
@@ -60,9 +61,13 @@ public class Rename {
 			String[] template = new String[0] ;
 			String[] og = original.toArray(template);
 			String[] replace = obscured.toArray(template);
-			for (int i = 0; i < obscured.size(); i++) {
-				line.replaceAll(og[i], replace[i]);
+			for (int i = 0; i < og.length; i++) {
+				line = line.replaceAll(og[i], replace[i]);
+				// System.out.println(og[i] + " " + replace[i]) ;
 			}
+			// System.out.println(Arrays.toString(og)) ;
+			// System.out.println(line) ;
+			return line ;
 		}
 		return finished;
 	}
