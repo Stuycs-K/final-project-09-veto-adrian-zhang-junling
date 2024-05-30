@@ -54,3 +54,8 @@ Created Debug.java, Rename.java, worked on and debugged Debug.java
 ### 5/29/2024
 
 Reworked Debug.java for String Compatibility, Continued working on Rename.java
+
+
+### 5/30/2024
+
+Continued working on Rename.java for String Compatibility and other scenarios
