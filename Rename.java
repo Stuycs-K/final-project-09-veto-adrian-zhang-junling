@@ -61,10 +61,12 @@ public class Rename {
 			String[] template = new String[0] ;
 			String[] og = original.toArray(template);
 			String[] replace = obscured.toArray(template);
+			String[] split = line.split("[ +-*/%&|^.]");
+			for(int j = 0; j < split.length; j++){
 			for (int i = 0; i < og.length; i++) {
-				line = line.replaceAll(og[i], replace[i]);
+				split[j] = split[j].replaceAll(og[i], replace[i]);
 				// System.out.println(og[i] + " " + replace[i]) ;
-			}
+			}}
 			// System.out.println(Arrays.toString(og)) ;
 			// System.out.println(line) ;
 			return line ;
