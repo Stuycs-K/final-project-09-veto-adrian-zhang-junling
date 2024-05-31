@@ -12,8 +12,8 @@ public class Rename {
 			String total = "";
 			while (scan.hasNextLine()) {
 				String line = scan.nextLine();
+				line = functions(line);
 				line = variable(line);
-				// line = functions(line);
 				total += line + "\n";
 				// System.out.println(line) ;
 			}
@@ -143,7 +143,50 @@ public class Rename {
 
 	public static String functions(String line) {
 		String finished = "";
-
+		line = line.trim();
+		if(line.indexOf("public class") != -1){
+			return line ;
+		}
+		String temp = "" ;
+		String name = "" ;
+		// Function Name at Declaration
+		if(line.indexOf("public ") != -1){
+			String[] split = line.split("[ ()]");
+			if(split[3].equals("main")){
+				return line ;
+			}
+			if(split[1].equals("static")){
+				temp = line.substring(0, line.indexOf(split[3])) ;
+				line = line.substring(line.indexOf(split[4]));
+				String name = randomName(split[3].length()) ;
+				original.add(split[3]) ;
+			}else{
+				temp = line.substring(0, line.indexOf(split[2])) ;
+				line = line.substring(line.indexOf(split[3])) ;
+				String name = randomName(split[2].length()) ;
+				original.add(split[2]) ;
+			}
+			obscured.add(name) ;
+			temp += name  + line;
+		}
+		// Function's local Arguments
+		String[] split = line.split("()") ;
+		if(split[2].length > 2){
+			String temp2 = "" ;
+			String args = split[2] ;
+			temp2 += split[1] + "(";
+			String split2 = args.split(",") ;
+			for(int i = 0; i < split2.length; i++){
+				String arg = split2[i].trim() ;
+				String[] type = arg.split(" ") ;
+				temp2 += type[0];
+				String name = randomName(type[1].length()) ;
+				temp2 += " " + name +", ";	
+				original.add(type[1]) ;
+				obscured.add(name) ;
+			}
+			temp2 += ")" + split[2] ;
+		}
 		return finished;
 	}
 
