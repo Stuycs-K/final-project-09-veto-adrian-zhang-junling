@@ -60,7 +60,7 @@ public class Rename {
 				original.add(split[1]);
 				obscured.add(name);
 				// System.out.println(finished + Arrays.toString(split) + name) ;
-				System.out.println(split[1] + " " + name);
+				// System.out.println(split[1] + " " + name);
 			} else {
 				for (int i = 0; i < original.size(); i++) {
 					if (original.get(i).equals(split[0])) {
@@ -73,7 +73,7 @@ public class Rename {
 				}
 			}
 		} else {
-			ArrayList<String> information = new ArrayList<>();
+			// ArrayList<String> information = new ArrayList<>();
 			/*
 			 * while (line.indexOf('"') != -1) {
 			 * String temp = line.substring(0, line.indexOf('"'));
@@ -82,27 +82,56 @@ public class Rename {
 			 * line = temp + line.substring(line.indexOf('"') + 1);
 			 * }
 			 */
-			System.out.println(line);
+			// System.out.println(line);
 			String[] split = line.split("[() ]");
-			System.out.println(Arrays.toString(split));
+			// System.out.println(Arrays.toString(split));
 			String temp = "";
+			boolean skip = false;
 			for (int j = 0; j < split.length; j++) {
 				for (int i = 0; i < original.size(); i++) {
+					// System.out.println(skip);
+					// System.out.println(split[j] + " " + original.get(i) +
+					// original.get(i).equals(split[j]));
 					if (original.get(i).equals(split[j])) {
 						int length = split[j].length();
-						temp += 
-						// System.out.println(line);
-					} else {
-						int end = line.indexOf(split[j]);
 						if (j == split.length - 1) {
-							temp += line.substring(end);
+							temp += obscured.get(i) + line.substring(line.indexOf(split[j]) + length);
 						} else {
-							temp += line.substring(end, line.indexOf(split[j + 1]));
+							temp += obscured.get(i)
+									+ line.substring(line.indexOf(split[j]) + length, line.indexOf(split[j + 1]));
+							line = line.substring(line.indexOf(split[j + 1]));
 						}
+						skip = true;
+						// System.out.println(temp);
 					}
-					// System.out.println(og[i] + " " + replace[i]) ;
 				}
+				// System.out.println(skip);
+				if (!skip) {
+					// System.out.println(1);
+					int length = split[j].length();
+					// System.out.println(length + " " + line.indexOf(split[j]));
+					// System.out.println(line + "\n" + temp);
+					int end = line.indexOf(split[j]);
+					temp += line.substring(end, end + length);
+					line = line.substring(end + length);
+					// System.out.println(line.indexOf(split[j + 1]));
+					if (j == split.length - 1) {
+						temp += line.substring(0);
+					} else {
+						temp += line.substring(0, line.indexOf(split[j + 1]));
+						line = line.substring(line.indexOf(split[j + 1]));
+					}
+					skip = false;
+				}
+				skip = false;
+				// System.out.println(skip);
+				// System.out.println(temp);
+				// System.out.println(line);
+				// System.out.println(og[i] + " " + replace[i]) ;
+
+				// System.out.println(temp);
 			}
+			line = temp;
 			// System.out.println(Arrays.toString(og)) ;
 			// System.out.println(line) ;
 			return line;
