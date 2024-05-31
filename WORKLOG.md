@@ -22,9 +22,13 @@ Worked on presentation file and finished the different types of obfuscation. Sta
 
 Finished up presentation document, including obfuscation tools and the IOCCC. Only thing to add to presentation is documentation for our code: how to use our programs.
 
-### 2024-05-29
+### 2024-05-30
 
 Started working on string obfuscation algorithm in Java, files committed on adrian branch.
+
+### 2024-05-31
+
+Working on string obfuscation, most works but a lot of java syntax errors that I need to fix later. Caesar is working and logic is good, but strings don't work right now.
 
 
 ## Junling Zhang
