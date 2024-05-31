@@ -1,24 +1,51 @@
 import java.util.Scanner;
 import java.io.*;
 
+
 public class string_obfuscation {
     public static void main(String[] args) {
-        if (args.length != 2) {
+        if (args.length != 1) {
             System.out.println("Please specify a file!\n");
-            exit();
+            System.exit(1);
         }
 
-        File cfile = new File(args[1]);
+        File cfile = new File(args[0]);
+        Scanner cscanner = null;
         try {
-            Scanner cscanner = new Scanner(cfile);  
+            cscanner = new Scanner(cfile);  
         }
         catch (FileNotFoundException e) {
             System.out.println("File " + args[1] + " not found!\n");
-            exit();
         }
 
         String code = cscanner.useDelimiter("\\A").next();
         cscanner.close();
+        
+        System.out.println(obfuscated(code, 1));
+    }
+
+    private static String obfuscated(String code, int key) {
+        String output = new String('*' * code.length());
+
+        for (int i = 0; i < code.length(); i++) {
+            // handling for anything other than strings
+            if (code.charAt(i) != 34 && code.charAt(i) != 39) {
+                output = output.substring(0, i) + code.charAt(i) + output.substring(i + 1, code.length());
+            }
+            // handling for strings
+            else {
+                int len = 0;
+                while (code.charAt(i + len) != 34 && code.charAt(i + len) != 39) {
+                    len++;
+                }
+                len -= 2;
+                String s = code.substring(i + 1, i + len + 1);
+
+                output = output.substring(0, i) + "\"" + caesar(s, key) + "\"" + output.substring(i + len + 1, code.length());
+            }
+        }
+
+        return output;
     }
 
     private static String caesar(String text, int x) {
