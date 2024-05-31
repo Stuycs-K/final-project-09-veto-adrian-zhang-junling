@@ -23,6 +23,7 @@ public class Rename {
 			scan.close();
 		} catch (Exception e) {
 			System.out.println(e);
+			e.printStackTrace() ;
 		}
 	}
 
@@ -83,8 +84,9 @@ public class Rename {
 			 * }
 			 */
 			// System.out.println(line);
-			String[] split = line.split("[() ]");
-			// System.out.println(Arrays.toString(split));
+			line  = line.replaceAll(" ", "") ;
+			String[] split = line.split("[{}() +*_&/|]");
+			System.out.println(Arrays.toString(split));
 			String temp = "";
 			boolean skip = false;
 			for (int j = 0; j < split.length; j++) {
@@ -152,13 +154,13 @@ public class Rename {
 			int letter = (int) (Math.random() * 100) % 26;
 			name += (char) (a + letter);
 		}
-		/*
-		 * for (int i = 0; i < obscured.size(); i++) {
-		 * if (name.equals(obscured.get(i))) {
-		 * name = randomName(length);
-		 * }
-		 * }
-		 */
+		
+		 for (int i = 0; i < obscured.size(); i++) {
+		 if (name.equals(obscured.get(i))) {
+		 name = randomName(length);
+		 }
+		 }
+		 
 		return name;
 	}
 }
