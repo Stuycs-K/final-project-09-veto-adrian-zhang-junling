@@ -67,3 +67,8 @@ Reworked Debug.java for String Compatibility, Continued working on Rename.java
 ### 5/30/2024
 
 Continued working on Rename.java for String Compatibility and other scenarios
+
+## Sources
+- [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
+- [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
+- [Code Obfuscation: A comprehensive guide against reverse engineering](https://www.appsealing.com/code-obfuscation/)
