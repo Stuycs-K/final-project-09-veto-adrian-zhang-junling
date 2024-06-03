@@ -30,6 +30,10 @@ Started working on string obfuscation algorithm in Java, files committed on adri
 
 Working on string obfuscation, most works but a lot of java syntax errors that I need to fix later. Caesar is working and logic is good, but strings don't work right now.
 
+### 2024-06-03
+
+Worked on converting the presentation file to a slideshow for use in the video. Cited sources here.
+
 
 ## Junling Zhang
 
