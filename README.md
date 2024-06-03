@@ -36,3 +36,10 @@ Vulnerabilities that already exist within the code does not get removed and it i
 ## Instructions
 
 PRESENTATION.md contains a text document made for presentations.
+
+## Sources
+- [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
+- [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
+- [Code Obfuscation: A comprehensive guide against reverse engineering](https://www.appsealing.com/code-obfuscation/)
+- [International Obfuscated C Code Contest](https://www.ioccc.org/)
+- [IOCCC 2020: Carlini](https://www.ioccc.org/2020/carlini/index.html)
