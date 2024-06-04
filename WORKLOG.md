@@ -72,6 +72,10 @@ Continued working on Rename.java for String Compatibility and other scenarios
 
 Trying to finishing working on Rename.java, finished code for replacing function names.
 
+### 6/4/2024
+
+Finished debugging and coding Rename.java, merged to main
+
 ## Sources
 - [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
 - [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
