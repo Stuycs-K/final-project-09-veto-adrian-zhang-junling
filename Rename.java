@@ -23,7 +23,7 @@ public class Rename {
 			scan.close();
 		} catch (Exception e) {
 			System.out.println(e);
-			e.printStackTrace() ;
+			e.printStackTrace();
 		}
 	}
 
@@ -84,14 +84,14 @@ public class Rename {
 			 * }
 			 */
 			// System.out.println(line);
-			String[] split = new String[0] ;
-			if(line.indexOf("public class") != -1 || line.indexOf("return") != -1){
-				return line ;
-			}else if(line.indexOf("public") != -1){
-				split = line.split(" ") ;
-			}else{
-				line  = line.replaceAll(" ", "") ;
-				split = line.split("[{}() +*_&/|]");
+			String[] split = new String[0];
+			if (line.indexOf("public class") != -1 || line.indexOf("return") != -1) {
+				return line;
+			} else if (line.indexOf("public") != -1) {
+				split = line.split(" ");
+			} else {
+				line = line.replaceAll(" ", "");
+				split = line.split("[() +*_&/|]");
 			}
 			// System.out.println(Arrays.toString(split));
 			String temp = "";
@@ -149,69 +149,72 @@ public class Rename {
 	}
 
 	public static String functions(String line) {
-		String finished = "";
+		// String finished = "";
 		line = line.trim();
-		if(line.indexOf("public class") != -1){
+		if (line.indexOf("public class") != -1) {
 			// System.out.println(line);
-			return line ;
+			return line;
 		}
-		String temp = "" ;
-		String name = "" ;
+		String temp = "";
+		String name = "";
 		// Function Name at Declaration
-		if(line.indexOf("public ") != -1){
+		if (line.indexOf("public ") != -1) {
 			String[] split = line.split("[ ()]");
-			// System.out.println(Arrays.toString(split)) ;
-			if(split[3].equals("main")){
-				return line ;
+			// System.out.println(Arrays.toString(split));
+			if (split[3].equals("main")) {
+				return line;
 			}
-			String line2 = line ;
-			if(split[1].equals("static")){
-				temp = line2.substring(0, line2.indexOf(split[3])) ;
-				line2 = line2.substring(line2.indexOf(split[4]));
-				name = randomName(split[3].length()) ;
-				original.add(split[3]) ;
+			String line2 = line;
+			// System.out.println(line);
+			if (split[1].equals("static")) {
+				temp = line2.substring(0, line2.indexOf(split[3]));
+				line2 = line2.substring(line2.indexOf("("));
+				name = randomName(split[3].length());
+				original.add(split[3]);
 				// System.out.println(temp) ;
-			}else{
-				temp = line2.substring(0, line2.indexOf(split[2])) ;
-				line2 = line2.substring(line2.indexOf(split[3])) ;
-				name = randomName(split[2].length()) ;
-				original.add(split[2]) ;
+				System.out.println(line2);
+			} else {
+				temp = line2.substring(0, line2.indexOf(split[2]));
+				line2 = line2.substring(line2.indexOf("("));
+				name = randomName(split[2].length());
+				original.add(split[2]);
 			}
-			obscured.add(name) ;
-			temp += name +"(" + line2;
-			line = temp ;
-			// System.out.println(temp) ;
-			try{
-		// Function's local Arguments
-		// System.out.println(line) ;
-		split = temp.split("[()]") ;
-		// System.out.println(Arrays.toString(split)) ;
-		if(split.length > 2){
-			String temp2 = "" ;
-			String args = split[1] ;
-			temp2 += split[0] + "(";
-			String[] split2 = args.split(",") ;
-			System.out.println(Arrays.toString(split2)) ;
-			for(int i = 0; i < split2.length ; i++){
-				String arg = split2[i].trim() ;
-				String[] type = arg.split(" ") ;
-				// System.out.println(Arrays.toString(type)) ;
-				temp2 += type[0];
-				name = randomName(type[1].length()) ;
-				temp2 += " " + name;	
-				original.add(type[1]) ;
-				obscured.add(name) ;
-				if(i != split2.length -1){
-					temp2 += "," ;
+			obscured.add(name);
+			// System.out.println(name);
+			temp += name + line2;
+			line = temp;
+			System.out.println(temp);
+			try {
+				// Function's local Arguments
+				// System.out.println(line) ;
+				split = temp.split("[()]");
+				// System.out.println(Arrays.toString(split));
+				if (split.length > 2) {
+					String temp2 = "";
+					String args = split[1];
+					temp2 += split[0] + "(";
+					String[] split2 = args.split(",");
+					// System.out.println(Arrays.toString(split2));
+					for (int i = 0; i < split2.length; i++) {
+						String arg = split2[i].trim();
+						String[] type = arg.split(" ");
+						// System.out.println(Arrays.toString(type)) ;
+						temp2 += type[0];
+						name = randomName(type[1].length());
+						temp2 += " " + name;
+						original.add(type[1]);
+						obscured.add(name);
+						if (i != split2.length - 1) {
+							temp2 += ",";
+						}
+					}
+					temp2 += ")" + split[2];
+					// System.out.println(temp2);
+					line = temp2;
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			temp2 += ")" + split[2] ;
-			System.out.println(temp2) ;
-			line = temp2;
-		}
-		}catch(Exception e){
-			e.printStackTrace() ;
-		}
 		}
 		return line;
 	}
@@ -223,13 +226,13 @@ public class Rename {
 			int letter = (int) (Math.random() * 100) % 26;
 			name += (char) (a + letter);
 		}
-		
-		 for (int i = 0; i < obscured.size(); i++) {
-		 if (name.equals(obscured.get(i))) {
-		 name = randomName(length);
-		 }
-		 }
-		 
+
+		for (int i = 0; i < obscured.size(); i++) {
+			if (name.equals(obscured.get(i))) {
+				name = randomName(length);
+			}
+		}
+
 		return name;
 	}
 }
