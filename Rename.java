@@ -15,9 +15,18 @@ public class Rename {
 			while (scan.hasNextLine()) {
 				String line = scan.nextLine();
 				line = functions(line);
-				line = variable(line);
 				total += line + "\n";
 				// System.out.println(line) ;
+			}
+			scan.close();
+			String temp = total;
+			total = "";
+			scan = new Scanner(temp);
+			blockCommented = false;
+			while (scan.hasNextLine()) {
+				String line = scan.nextLine();
+				line = variable(line);
+				total += line + "\n";
 			}
 			FileWriter w = new FileWriter(args[0], false);
 			w.write(total);
@@ -34,7 +43,7 @@ public class Rename {
 		String prefix = "";
 		String addon = "";
 		// Check for All Comments
-		boolean check = functionResult;
+		boolean check = blockCommented;
 		// System.out.println(line + "\n");
 		// System.out.println(line + check);
 		boolean Check = blockComment(line);
@@ -101,9 +110,44 @@ public class Rename {
 					finished += split[i];
 				}
 			}
-			String temp = finished;
-			String[] temp2 = temp.split("=");
-			finished = finished.substring(0, finished.indexOf("=") + 1) + variable(temp2[1]);
+			String temp = finished.substring(0, finished.indexOf("=") + 1);
+			finished = finished.substring(finished.indexOf("=") + 1);
+			String[] operating = finished.split("[() +*&/|;]");
+			// System.out.println(Arrays.toString(operating));
+			int index = -1;
+			for (int i = 0; i < operating.length; i++) {
+				for (int j = 0; j < original.size(); j++) {
+					// System.out.println(operating[i]);
+					// System.out.println(original.get(j));
+					// System.out.println(original.toString());
+					// System.out.println(temp);
+					// System.out.println(finished + "\n");
+					// System.out.println(original.get(j).equals(operating[i]));
+					if (original.get(j).equals(operating[i])) {
+						if (i == operating.length - 1) {
+							temp += finished.substring(finished.indexOf(operating[i]));
+							finished = temp;
+						} else {
+							System.out.println("active");
+							temp += obscured.get(j) + finished.substring(original.get(j).length(),
+									finished.indexOf(operating[i + 1]));
+							finished = finished.substring(finished.indexOf(operating[i]) + operating[i].length());
+						}
+						break;
+					} else if (j == original.size() - 1) {
+						if (i == operating.length - 1) {
+							temp += finished.substring(finished.indexOf(operating[i]));
+						} else {
+							temp += finished.substring(0, finished.indexOf(operating[i + 1]));
+							finished = finished.substring(finished.indexOf(operating[i]) + operating[i].length());
+						}
+					}
+				}
+			}
+			// System.out.println(original.toString());
+			// System.out.println(finished);
+			// System.out.println(temp);
+			finished = temp;
 		} else {
 			// System.out.println("|" + line);
 			// ArrayList<String> information = new ArrayList<>();
@@ -123,11 +167,11 @@ public class Rename {
 				split = line.split(" ");
 			} else {
 				line = line.replaceAll(" ", "");
-				split = line.split("[() +&/|;]");
+				split = line.split("[() +*&/|;]");
 			}
 			if (line.indexOf("return") != -1) {
 				prefix += "return ";
-				split = line.substring(line.indexOf("return") + 6).split("() +&/|;");
+				split = line.substring(line.indexOf("return") + 6).split("[() +*&/|;]");
 				// System.out.println(Arrays.toString(split) + prefix);
 			}
 			// System.out.println(Arrays.toString(split) + "\n");
