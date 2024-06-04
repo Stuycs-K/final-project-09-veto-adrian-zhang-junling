@@ -5,6 +5,7 @@ public class Rename {
 	private static boolean str = false;
 	public static ArrayList<String> original = new ArrayList<String>(0);
 	public static ArrayList<String> obscured = new ArrayList<String>(0);
+	public static boolean blockCommented = false;
 
 	public static void main(String[] args) {
 		try {
@@ -28,6 +29,24 @@ public class Rename {
 	}
 
 	public static String variable(String line) {
+		String prefix = "";
+		String addon = "";
+		// Check for All Comments
+		boolean check = blockCommented;
+		// System.out.println(line + "\n");
+		if (blockComment(line) != check) {
+			if (check) {
+				prefix = line.substring(0, line.indexOf("*/"));
+				line = line.substring(line.indexOf("*/"));
+			} else {
+				addon = line.substring(line.indexOf("/*"));
+				line = line.substring(0, line.indexOf("/*"));
+			}
+		} else {
+			if (check) {
+				return line;
+			}
+		}
 		line = line.trim();
 		String finished = "";
 		boolean detected = false;
@@ -86,7 +105,7 @@ public class Rename {
 			// System.out.println(line);
 			String[] split = new String[0];
 			if (line.indexOf("public class") != -1 || line.indexOf("return") != -1) {
-				return line;
+				return prefix + line + addon;
 			} else if (line.indexOf("public") != -1) {
 				split = line.split(" ");
 			} else {
@@ -143,26 +162,45 @@ public class Rename {
 			line = temp;
 			// System.out.println(Arrays.toString(og)) ;
 			// System.out.println(line) ;
-			return line;
+			return prefix + line + addon;
 		}
-		return finished;
+		return prefix + finished + addon;
 	}
 
 	public static String functions(String line) {
+		String prefix = "";
+		String addon = "";
+		// Check for All Comments
+		boolean check = blockCommented;
+		// System.out.println(line + "\n");
+		if (blockComment(line) != check) {
+			if (check) {
+				prefix = line.substring(0, line.indexOf("*/"));
+				line = line.substring(line.indexOf("*/"));
+			} else {
+				addon = line.substring(line.indexOf("/*"));
+				line = line.substring(0, line.indexOf("/*"));
+			}
+		} else {
+			if (check) {
+				return line;
+			}
+		}
+		String temp = "";
+		// System.out.println(prefix + "\n" + line + "\n___");
 		// String finished = "";
 		line = line.trim();
 		if (line.indexOf("public class") != -1) {
 			// System.out.println(line);
 			return line;
 		}
-		String temp = "";
 		String name = "";
 		// Function Name at Declaration
 		if (line.indexOf("public ") != -1) {
 			String[] split = line.split("[ ()]");
 			// System.out.println(Arrays.toString(split));
 			if (split[3].equals("main")) {
-				return line;
+				return prefix + line + addon;
 			}
 			String line2 = line;
 			// System.out.println(line);
@@ -172,7 +210,7 @@ public class Rename {
 				name = randomName(split[3].length());
 				original.add(split[3]);
 				// System.out.println(temp) ;
-				System.out.println(line2);
+				// System.out.println(line2);
 			} else {
 				temp = line2.substring(0, line2.indexOf(split[2]));
 				line2 = line2.substring(line2.indexOf("("));
@@ -183,7 +221,7 @@ public class Rename {
 			// System.out.println(name);
 			temp += name + line2;
 			line = temp;
-			System.out.println(temp);
+			// System.out.println(temp);
 			try {
 				// Function's local Arguments
 				// System.out.println(line) ;
@@ -216,7 +254,19 @@ public class Rename {
 				e.printStackTrace();
 			}
 		}
-		return line;
+		return prefix + line + addon;
+	}
+
+	public static boolean blockComment(String line) {
+		if (line.indexOf("/*") != -1) {
+			blockCommented = true;
+			return true;
+		} else if (line.indexOf("*/") != -1) {
+			blockCommented = false;
+			return false;
+		} else {
+			return blockCommented;
+		}
 	}
 
 	public static String randomName(int length) {
