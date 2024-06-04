@@ -101,7 +101,11 @@ public class Rename {
 					finished += split[i];
 				}
 			}
+			String temp = finished;
+			String[] temp2 = temp.split("=");
+			finished = finished.substring(0, finished.indexOf("=") + 1) + variable(temp2[1]);
 		} else {
+			// System.out.println("|" + line);
 			// ArrayList<String> information = new ArrayList<>();
 			/*
 			 * while (line.indexOf('"') != -1) {
@@ -113,15 +117,20 @@ public class Rename {
 			 */
 			// System.out.println(line);
 			String[] split = new String[0];
-			if (line.indexOf("public class") != -1 || line.indexOf("return") != -1) {
+			if (line.indexOf("public class") != -1) {
 				return prefix + line + addon;
 			} else if (line.indexOf("public") != -1) {
 				split = line.split(" ");
 			} else {
 				line = line.replaceAll(" ", "");
-				split = line.split("[() +*_&/|]");
+				split = line.split("[() +&/|;]");
 			}
-			// System.out.println(Arrays.toString(split));
+			if (line.indexOf("return") != -1) {
+				prefix += "return ";
+				split = line.substring(line.indexOf("return") + 6).split("() +&/|;");
+				// System.out.println(Arrays.toString(split) + prefix);
+			}
+			// System.out.println(Arrays.toString(split) + "\n");
 			String temp = "";
 			boolean skip = false;
 			for (int j = 0; j < split.length; j++) {
