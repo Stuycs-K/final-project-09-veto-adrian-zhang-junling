@@ -6,6 +6,7 @@ public class Rename {
 	public static ArrayList<String> original = new ArrayList<String>(0);
 	public static ArrayList<String> obscured = new ArrayList<String>(0);
 	public static boolean blockCommented = false;
+	public static boolean functionResult = false;
 
 	public static void main(String[] args) {
 		try {
@@ -29,16 +30,23 @@ public class Rename {
 	}
 
 	public static String variable(String line) {
+		line = line.trim();
 		String prefix = "";
 		String addon = "";
 		// Check for All Comments
-		boolean check = blockCommented;
+		boolean check = functionResult;
 		// System.out.println(line + "\n");
-		if (blockComment(line) != check) {
+		// System.out.println(line + check);
+		boolean Check = blockComment(line);
+		// System.out.println(Check);
+		if (Check != check) {
+			// System.out.println("there");
 			if (check) {
-				prefix = line.substring(0, line.indexOf("*/"));
-				line = line.substring(line.indexOf("*/"));
+				// System.out.println("here");
+				prefix = line.substring(0, line.indexOf("*/") + 2);
+				line = line.substring(line.indexOf("*/") + 2);
 			} else {
+				// System.out.println("here2");
 				addon = line.substring(line.indexOf("/*"));
 				line = line.substring(0, line.indexOf("/*"));
 			}
@@ -47,7 +55,7 @@ public class Rename {
 				return line;
 			}
 		}
-		line = line.trim();
+		// System.out.println(prefix + " | " + addon + "|" + line);
 		String finished = "";
 		boolean detected = false;
 		for (int i = 0; i < line.length(); i++) {
@@ -61,6 +69,7 @@ public class Rename {
 		}
 		if (detected) {
 			String[] split = line.split("[ =]");
+			// System.out.println(Arrays.toString(split));
 			boolean newVar = true;
 			String checkState = line.substring(0, line.indexOf("="));
 			if (checkState.charAt(checkState.length() - 1) == ' ') {
@@ -75,7 +84,7 @@ public class Rename {
 				String name = randomName(split[1].length());
 				finished += name + "=";
 				for (int i = 2; i < split.length; i++) {
-					finished += split[i];
+					finished += variable(split[i]);
 				}
 				original.add(split[1]);
 				obscured.add(name);
@@ -172,6 +181,7 @@ public class Rename {
 		String addon = "";
 		// Check for All Comments
 		boolean check = blockCommented;
+		functionResult = check;
 		// System.out.println(line + "\n");
 		if (blockComment(line) != check) {
 			if (check) {
