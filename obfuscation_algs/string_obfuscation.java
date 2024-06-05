@@ -4,7 +4,7 @@ import java.io.*;
 
 public class string_obfuscation {
     public static void main(String[] args) {
-        if (args.length != 1) {
+        if (args.length != 2) {
             System.out.println("Please specify a file!\n");
             System.exit(1);
         }
@@ -15,13 +15,13 @@ public class string_obfuscation {
             cscanner = new Scanner(cfile);  
         }
         catch (FileNotFoundException e) {
-            System.out.println("File " + args[1] + " not found!\n");
+            System.out.println("File " + args[0] + " not found!\n");
         }
 
         String code = cscanner.useDelimiter("\\A").next();
         cscanner.close();
         
-        System.out.println(obfuscated(code, 1));
+        System.out.println(obfuscated(code, Integer.valueOf(args[1])));
     }
 
     private static String obfuscated(String code, int key) {
