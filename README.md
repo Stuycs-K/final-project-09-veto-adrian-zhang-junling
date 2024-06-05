@@ -37,6 +37,16 @@ Vulnerabilities that already exist within the code does not get removed and it i
 
 PRESENTATION.md contains a text document made for presentations.
 
+Debug.java - Compile it(through javac), then provide the name/path to a java file(like *** java Debug.java File.java ***).
+              This will replace the contents within the file to one with the comments removed.
+    Ex: ***javac Debug.java
+    java Debug.java File.java***
+Rename.java - Compile it(through javac), then provide the name/path to a java file(like *** java Rename.java File.java ***).
+              This will replace the contents within the provided the file to one with randomized names for function and variable name
+              Ex: 
+              *** javac Rename.java
+              java Rename.java File.java ***
+
 ## Sources
 - [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
 - [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
