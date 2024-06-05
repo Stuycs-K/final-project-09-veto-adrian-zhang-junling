@@ -34,6 +34,9 @@ Working on string obfuscation, most works but a lot of java syntax errors that I
 
 Worked on converting the presentation file to a slideshow for use in the video. Cited sources here.
 
+### 2024-06-05
+Finished string obfuscation algorithm.
+
 
 ## Junling Zhang
 
