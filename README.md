@@ -41,6 +41,7 @@ Debug.java - Compile it(through javac), then provide the name/path to a java fil
               This will replace the contents within the file to one with the comments removed.
     Ex: ***javac Debug.java
     java Debug.java File.java***
+
 Rename.java - Compile it(through javac), then provide the name/path to a java file(like *** java Rename.java File.java ***).
               This will replace the contents within the provided the file to one with randomized names for function and variable name
               Ex: 
