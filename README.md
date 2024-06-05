@@ -47,11 +47,11 @@ Debug.java - Compile it(through javac), then provide the name/path to a java fil
 
 Rename.java - Compile it(through javac), then provide the name/path to a java file(like ***java Rename.java File.java***).
               This will replace the contents within the provided the file to one with randomized names for function and variable name
-              Ex: 
+     Ex: 
               
-              javac Rename.java
+     javac Rename.java
               
-              java Rename.java File.java
+     java Rename.java File.java
 
 ## Sources
 - [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
