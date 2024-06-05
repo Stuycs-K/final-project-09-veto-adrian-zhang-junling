@@ -21,7 +21,31 @@ public class string_obfuscation {
         String code = cscanner.useDelimiter("\\A").next();
         cscanner.close();
         
-        System.out.println(obfuscated(code, Integer.valueOf(args[1])));
+        String obfuscated_code = obfuscated(code, Integer.valueOf(args[1]));
+
+        String newFileName = args[0].substring(0, args[0].indexOf(".")) + "_obfuscated" + args[0].substring(args[0].indexOf("."), args[0].length());
+
+        File myObj = null;
+        try {
+            myObj = new File(newFileName);
+            if (myObj.createNewFile()) {
+            //   System.out.println("File created: " + myObj.getName());
+            } else {
+              System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter writer = new FileWriter(myObj, false);
+            writer.write(obfuscated_code);
+            writer.close();
+        }
+        catch(Exception e) {
+            System.out.println("There was an error");
+        }
     }
 
     private static String obfuscated(String code, int key) {
