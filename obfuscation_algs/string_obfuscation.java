@@ -25,27 +25,34 @@ public class string_obfuscation {
     }
 
     private static String obfuscated(String code, int key) {
-        String output = new String('*' * code.length());
 
         for (int i = 0; i < code.length(); i++) {
             // handling for anything other than strings
-            if (code.charAt(i) != 34 && code.charAt(i) != 39) {
-                output = output.substring(0, i) + code.charAt(i) + output.substring(i + 1, code.length());
+            // System.out.print(code.charAt(i));
+            if (code.charAt(i) != '\"' && code.charAt(i) != '\'') {
+                code = code.substring(0, i) + code.charAt(i) + code.substring(i + 1, code.length());
             }
             // handling for strings
             else {
-                int len = 0;
+                int len = 1;
                 while (code.charAt(i + len) != 34 && code.charAt(i + len) != 39) {
+                    // System.out.println("i + len: " + code.charAt(i + len));
                     len++;
                 }
                 len -= 2;
-                String s = code.substring(i + 1, i + len + 1);
+                if (len < 0) {len = 0;}
+                String s = code.substring(i + 1, i + len + 2);
+                // System.out.println();
+                // System.out.println(code.substring(0, i + 1));
+                // System.out.println("String in quotes: \"\"\"" + s + "\"\"\"");
+                // System.out.println(code.substring(i + len + 2, code.length()));
 
-                output = output.substring(0, i) + "\"" + caesar(s, key) + "\"" + output.substring(i + len + 1, code.length());
+                code = code.substring(0, i + 1) + caesar(s, key) + code.substring(i + len + 2, code.length());
+                i = i + len + 3;
             }
         }
 
-        return output;
+        return code;
     }
 
     private static String caesar(String text, int x) {
