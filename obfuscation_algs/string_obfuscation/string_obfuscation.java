@@ -80,6 +80,14 @@ public class string_obfuscation {
     }
 
     private static String caesar(String text, int x) {
+        if (Math.abs(x) > 26) {
+            x = x%26;
+        }
+
+        if (x < 0) {
+            x = 26 + x;
+        }
+
         for (int i = 0; i < text.length(); i++) {
             char oldChar = text.charAt(i);
             if (oldChar >= 65 && oldChar <= 90) {
