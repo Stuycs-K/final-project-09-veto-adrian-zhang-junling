@@ -55,6 +55,11 @@ Rename.java - Compile it(through javac), then provide the name/path to a java fi
               
      java Rename.java File.java
 
+string_obfuscation.java usage
+```
+  make run ARGS="FILE.java"
+```
+
 ## Sources
 - [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
 - [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
