@@ -60,6 +60,8 @@ PRESENTATION.md contains a text document made for presentations.
   make run ARGS="FILE.java key"
 ```
 
+To deobfuscate a string-encrypted file, run the algorithm the same way but with the negative key.
+
 ## Sources
 - [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
 - [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
