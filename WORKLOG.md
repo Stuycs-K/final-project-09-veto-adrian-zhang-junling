@@ -37,6 +37,10 @@ Worked on converting the presentation file to a slideshow for use in the video. 
 ### 2024-06-05
 Finished string obfuscation algorithm.
 
+### 2024-06-07
+
+Organized files in the repository, worked on script for video recording.
+
 
 ## Junling Zhang
 
