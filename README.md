@@ -57,7 +57,7 @@ PRESENTATION.md contains a text document made for presentations.
 
 **string_obfuscation.java** usage
 ```
-  make run ARGS="FILE.java"
+  make run ARGS="FILE.java key"
 ```
 
 ## Sources
