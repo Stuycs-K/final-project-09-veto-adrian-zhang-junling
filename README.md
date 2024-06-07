@@ -37,7 +37,7 @@ Vulnerabilities that already exist within the code does not get removed and it i
 
 PRESENTATION.md contains a text document made for presentations.
 
-Debug.java - Compile it(through javac), then provide the name/path to a java file(like ***java Debug.java File.java***).
+**Debug.java** - Compile it(through javac), then provide the name/path to a java file(like ***java Debug.java File.java***).
               This will replace the contents within the file to one with the comments removed.
               
     Ex: 
@@ -46,7 +46,7 @@ Debug.java - Compile it(through javac), then provide the name/path to a java fil
     
     java Debug.java File.java
 
-Rename.java - Compile it(through javac), then provide the name/path to a java file(like ***java Rename.java File.java***).
+**Rename.java** - Compile it(through javac), then provide the name/path to a java file(like ***java Rename.java File.java***).
               This will replace the contents within the provided the file to one with randomized names for function and variable name.
               
      Ex: 
@@ -55,7 +55,7 @@ Rename.java - Compile it(through javac), then provide the name/path to a java fi
               
      java Rename.java File.java
 
-string_obfuscation.java usage
+**string_obfuscation.java** usage
 ```
   make run ARGS="FILE.java"
 ```
