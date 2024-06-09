@@ -5,6 +5,9 @@ Members: Adrian Veto, Junling Zhang
 
 Topic: Code Obfuscation
 
+## Presentation
+[Video of presentation](https://drive.google.com/file/d/1RqsMn0OSBKAZG9qTw8gaoo8k9pna3_3R/view?usp=sharing)
+
 ## Overview
 Code Obfuscation is a method of hiding code in such a way that it can't a) be decomplied, or b)is very hard to parse through.
 There are also tournaments that are centered around obfuscation, one of which is the International Obfuscated C Code Contest.
