@@ -16,7 +16,7 @@ public class Rename {
 				String line = scan.nextLine();
 				line = functions(line);
 				total += line + "\n";
-				// System.out.println(line) ;
+				// System.out.println(line);
 			}
 			scan.close();
 			String temp = total;
@@ -46,7 +46,7 @@ public class Rename {
 		boolean check = blockCommented;
 		// System.out.println(line + "\n");
 		// System.out.println(line + check);
-		boolean Check = blockComment(line);
+		boolean Check = blockComment(line.replaceAll("\".*\"", ""));
 		// System.out.println(Check);
 		if (Check != check) {
 			// System.out.println("there");
@@ -95,6 +95,7 @@ public class Rename {
 				for (int i = 2; i < split.length; i++) {
 					finished += variable(split[i]);
 				}
+				// System.out.println(finished);
 				original.add(split[1]);
 				obscured.add(name);
 				// System.out.println(finished + Arrays.toString(split) + name) ;
@@ -114,7 +115,6 @@ public class Rename {
 			finished = finished.substring(finished.indexOf("=") + 1);
 			String[] operating = finished.split("[() +*&/|;]");
 			// System.out.println(Arrays.toString(operating));
-			int index = -1;
 			for (int i = 0; i < operating.length; i++) {
 				for (int j = 0; j < original.size(); j++) {
 					// System.out.println(operating[i]);
@@ -128,7 +128,7 @@ public class Rename {
 							temp += finished.substring(finished.indexOf(operating[i]));
 							finished = temp;
 						} else {
-							System.out.println("active");
+							// System.out.println("active");
 							temp += obscured.get(j) + finished.substring(original.get(j).length(),
 									finished.indexOf(operating[i + 1]));
 							finished = finished.substring(finished.indexOf(operating[i]) + operating[i].length());
@@ -136,10 +136,14 @@ public class Rename {
 						break;
 					} else if (j == original.size() - 1) {
 						if (i == operating.length - 1) {
+							// System.out.println(temp);
 							temp += finished.substring(finished.indexOf(operating[i]));
 						} else {
+							// System.out.println(temp);
+							// System.out.println(finished);
 							temp += finished.substring(0, finished.indexOf(operating[i + 1]));
-							finished = finished.substring(finished.indexOf(operating[i]) + operating[i].length());
+							finished = finished.substring(finished.indexOf(operating[i]));
+							// System.out.println(temp);
 						}
 					}
 				}
@@ -230,13 +234,15 @@ public class Rename {
 	}
 
 	public static String functions(String line) {
+		line = line.trim();
 		String prefix = "";
 		String addon = "";
 		// Check for All Comments
 		boolean check = blockCommented;
 		functionResult = check;
 		// System.out.println(line + "\n");
-		if (blockComment(line) != check) {
+		// System.out.println(blockCommented);
+		if (blockComment(line.replaceAll("\".*\"", "")) != check) {
 			if (check) {
 				prefix = line.substring(0, line.indexOf("*/"));
 				line = line.substring(line.indexOf("*/"));
@@ -259,6 +265,7 @@ public class Rename {
 		}
 		String name = "";
 		// Function Name at Declaration
+		// System.out.println(line);
 		if (line.indexOf("public ") != -1) {
 			String[] split = line.split("[ ()]");
 			// System.out.println(Arrays.toString(split));
@@ -323,6 +330,9 @@ public class Rename {
 	public static boolean blockComment(String line) {
 		if (line.indexOf("/*") != -1) {
 			blockCommented = true;
+			if (line.indexOf("*/") != -1) {
+				blockCommented = false;
+			}
 			return true;
 		} else if (line.indexOf("*/") != -1) {
 			blockCommented = false;
