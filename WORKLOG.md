@@ -88,6 +88,10 @@ Finished debugging and coding Rename.java, merged to main
 
 Added to README.md, some organzational stuff
 
+### 6/9/2024
+
+Refixed Rename.java, added post debug and renam obfuscation code
+
 ## Sources
 - [What is Obfuscation? - Preemptive](https://www.preemptive.com/what-is-obfuscation/#:~:text=Code%20Obfuscation%20is%20the%20process,the%20output%20of%20the%20program.)
 - [What is Obfuscation? - GuardSquare](https://www.guardsquare.com/what-is-code-obfuscation)
